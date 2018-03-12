@@ -37,22 +37,32 @@ const asyncIncrementor = () => {
 
 asyncIncrementor.value = 0;
 
-const createIncrementer = () => {};
+const createIncrementer = function* (){
+    let index = 0;
+    while (true)
+		yield ++index;
+};
 
 // return same argument not earlier than in one second, and not later, than in twoe
 const returnBackInSecond = (parameter) => {
 	return new Promise(resolve => {
         setTimeout(() => {
         	return resolve(parameter)
-     	}, 1001);
+     	}, 1000);
     })
 };
 
 
 
-const getDeepPropertiesCount = () => {};
+const getDeepPropertiesCount = (obj) => {
+	let str = JSON.stringify(obj);
+  	let total = str.split('{').length - 2;
+	return total;
+};
 
-const createSerializedObject = () => {};
+const createSerializedObject = () => {
+	return new String(JSON.stringify({}));
+};
 
 const toBuffer = () => {};
 
